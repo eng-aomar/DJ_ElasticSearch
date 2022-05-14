@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+    <div class="container" style="margin-top: 100px">
+      <form>
+        <div class="input-group mb-3 d-flex center" style="margin-top: 50px;" >
+            <input type="text"  name='q' class="form-control" placeholder="type your query here" width="50px;" aria-label="Recipient's username" required>
+            <textarea class="span6" rows="3" placeholder="What's up?" required></textarea>
+
+            <input type='submit' value='NED' class="btn btn-danger"  id="button-addon2"></button>
+          </div>
+        </form>
+      <div class="alert alert-success" role="alert">
+        {{msg}}
+      </div>
+    {% for result in results %}
+    <div class="card" style="width: 100%; margin-bottom: 10px;background-color: aliceblue;" >
+        <div class="card-body">
+          <h6 class="card-subtitle mb-2 text-muted">score: {{result.score}}</h6>
+          <h5 class="card-title">{{ result.arlabel }} </h5>
+          <h5 class="card-title">{{ result.enlabel }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{result.araliases}}</h6>
+          <h6 class="card-subtitle mb-2 text-muted">{{result.enaliases}}</h6>          
+          <p class="card-text">{{ result.ardescription }}</p>
+          <p class="card-text">{{ result.endescription }}</p>
+          <a href= "{{ result.url }}" class="card-link"  target="_blank">{{ result.id }}</a>
+          <a href= "{{ result.arwiki_url }}" class="card-link"  target="_blank">{{ result.arwiki }}</a>
+          
+        </div>
+      </div>
+      {% endfor %}  
+    </div>
+{% endblock %}  
+
+<style>
+  .center {
+  margin: auto;
+  width: 50%;
+ 
+  padding: 10px;
+}
+</style>
